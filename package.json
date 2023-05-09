@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "proxy rotation tool to avoid API rate-limiting",
   "main": "init.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon init.js",
-    "start": "node init.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "start": "node build/init.js",
     "build": "npx tsc"
   },
   "repository": {
@@ -25,5 +28,9 @@
     "@types/http-proxy-middleware": "^1.0.5",
     "express": "^4.17.2",
     "http-proxy-middleware": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "concurrently": "^6.4.0"
   }
 }
